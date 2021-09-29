@@ -85,3 +85,14 @@ Records: 4  Duplicates: 0  Warnings: 0
  | Pinkey    | Hade     | 49A, XY Colony          | Mumbai   | Maha        |  74855 |     751695  | pinkey@gmail.com  |
  +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
  3 rows in set (0.08 sec)
+
+
+ #UC6 - ability to retrive person belonging to a city
+
+ mysql> SELECT * FROM Address_Book_Table WHERE City = 'Pune';
+ +-----------+----------+-----------------+--------+-------+--------+-------------+-----------------+
+ | FirstName | LastName | Address         | City   | State | Zip    | PhoneNumber | Email           |
+ +-----------+----------+-----------------+--------+-------+--------+-------------+-----------------+
+ | Piyu      | Kolpuke  | 45A, XYZ Colony | Pune   | Maha  | 879465 |    21379847 | piyu@gmail.com  |
+ +-----------+----------+-----------------+--------+-------+--------+-------------+-----------------+
+ 1 row in set (0.00 sec)
