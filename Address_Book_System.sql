@@ -128,7 +128,7 @@ Records: 4  Duplicates: 0  Warnings: 0
  +-----------+----------+-------------------------+----------+-------+--------+-------------+-------------------+
  | Aaroh     | Nelwad   | Amravati yashoda square | Amravati | Maha  |   7456 |  1258896    | aau@gmail.com     |
  | Pinkey    | Hade     | 49A, XY Colony          | Mumbai   | Maha  |  74855 |     751695  | pinkey@gmail.com  |
- | Rahul     | Ninawe   | 45A, XYZ Colony         | Nagpur   | Maha  | 879465 |    21379847 | rahul@gmail.com   |
+ | Piyu      | Kolpuke  | 45A, XYZ Colony         | Pune     | Maha  | 879465 |    21379847 | piyu@gmail.com    |
  +-----------+----------+-------------------------+----------+-------+--------+-------------+-------------------+
  3 rows in set (0.10 sec)
 
@@ -269,3 +269,84 @@ mysql> CREATE TABLE AddressBook(
     -> FOREIGN KEY (PersonId) REFERENCES People(PersonId)
     -> );
 Query OK, 0 rows affected (0.57 sec)
+
+
+//UC13
+         #Refactor uc6
+mysql> SELECT FirstName,LastName,City
+    -> FROM Address INNER JOIN People
+    -> ON Address.PersonId = People.PersonId
+    -> WHERE City = 'Amravati';
++-----------+----------+----------+
+| FirstName | LastName | City     |
++-----------+----------+----------+
+| Aaroh     | Nelwad   | Amravati |
++-----------+----------+----------+
+1 row in set (0.03 sec)
+
+mysql> SELECT FirstName,LastName,State
+    -> FROM Address INNER JOIN People
+    -> ON Address.PersonId = People.PersonId
+    -> WHERE State = 'Maha';
++-----------+----------+-------+
+| FirstName | LastName | State |
++-----------+----------+-------+
+| Piyu      | Kolpuke  | Maha  |
+| Aaroh     | Nelwad   | Maha  |
+| Samay     | Raina    | Maha  |
+| Tanmay    | Bhat     | Maha  |
++-----------+----------+-------+
+4 rows in set (0.00 sec)
+
+	#Refactor uc7
+mysql> SELECT COUNT(City),City
+    -> FROM Address INNER JOIN People
+    -> ON Address.PersonId = People.PersonId
+    -> WHERE City = 'Pune'
+    -> GROUP BY City;
++-------------+------+
+| COUNT(City) | City |
++-------------+------+
+|           1 | Pune |
++-------------+------+
+1 row in set (0.12 sec)
+
+mysql> SELECT COUNT(State),State
+    -> FROM Address INNER JOIN People
+    -> ON Address.PersonId = People.PersonId
+    -> WHERE State = 'Maha'
+    -> GROUP BY State;
++--------------+-------+
+| COUNT(State) | State |
++--------------+-------+
+|            4 | Maha  |
++--------------+-------+
+1 row in set (0.00 sec)
+
+	#Refactor uc8
+mysql> SELECT * FROM People INNER JOIN Address
+    -> ON Address.PersonId = People.PersonId
+    -> WHERE State = 'Maha'
+    -> ORDER BY FirstName ASC;
++----------+-----------+----------+-------------+------------------+----------+-----------------+----------+-------+----------+
+| PersonId | FirstName | LastName | PhoneNumber | Email            | PersonId | Person_Address  | City     | State | Zip_Code |
++----------+-----------+----------+-------------+------------------+----------+-----------------+----------+-------+----------+
+|        3 | Aaroh     | Nelwad   |  9999999999 | Aaroh@gmail.com  |        3 | 87B, XY Colony  | Amravati | Maha  |   852147 |
+|        1 | Piyu      | Kolpuke  |  7777777777 | piyu@gmail.com   |        1 | 45A, XYZ Colony | pune     | Maha  |   879465 |
+|        4 | Samay     | Raina    |  4444444444 | Samay@gmail.com  |        4 | 83B, Y Colony   | Nagpur   | Maha  |   456369 |
+|        5 | Tanmay    | Bhat     |  5555555555 | Tanmay@gmail.com |        5 | 81B, P Colony   | Mumbai   | Maha  |   854967 |
++----------+-----------+----------+-------------+------------------+----------+-----------------+----------+-------+----------+
+4 rows in set (0.00 sec)
+
+	#Refactor uc10
+mysql> SELECT COUNT(AddressBookType),AddressBookType
+    -> FROM AddressBook INNER JOIN People
+    -> ON AddressBook.PersonId = People.PersonId
+    -> WHERE AddressBookType = 'Friend'
+    -> GROUP BY AddressBookType;
++------------------------+-----------------+
+| COUNT(AddressBookType) | AddressBookType |
++------------------------+-----------------+
+|                      2 | Friend          |
++------------------------+-----------------+
+1 row in set (0.00 sec)
