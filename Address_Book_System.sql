@@ -9,6 +9,7 @@ Query OK, 1 row affected (0.76 sec)
 mysql> use AddressBookService
 Database changed
 
+
 #UC2 - Creating Address Book Table
 
 mysql> CREATE TABLE Address_Book_Table
@@ -37,3 +38,17 @@ mysql> DESCRIBE Address_book_Table;
 | Email       | varchar(50)  | NO   |     | NULL    |       |
 +-------------+--------------+------+-----+---------+-------+
 8 rows in set (0.73 sec)
+
+
+#UC3 - Adding Contacts
+
+mysql> INSERT INTO Address_Book_Table VALUES
+    -> ('Piyu', 'Kolpuke', '36B, XYZ Colony','Pune','Maha', 879465, 21379847, 'piyu@gmail.com'),
+    -> ('Aaroh', 'Nelwad', 'XZ Colony','Amravati','Maha', 879478,1258896, 'aaroh@gmail.com'),
+    -> ('Sonu', 'Chame', '45b, XYZ Colony','goa','yxt', 74665, 3774814, 'sonu@gmail.com'),
+    -> ('pinkey', 'Hade', '49A, XY Colony','Mumbai','Maha', 74855, 751695, 'pinkey@gmail.com');
+Query OK, 4 rows affected (0.32 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+
+#UC4 - 
