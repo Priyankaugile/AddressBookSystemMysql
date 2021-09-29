@@ -51,4 +51,21 @@ Query OK, 4 rows affected (0.32 sec)
 Records: 4  Duplicates: 0  Warnings: 0
 
 
-#UC4 - 
+#UC4 Editing existing contact by first name
+
+ mysql> UPDATE Address_Book_Table
+     -> SET Address = 'Amravati yashoda square', State ='Maharashtra', Zip = '7456', Email = 'aau@gmail.com'
+     -> WHERE FirstName = 'Aaroh';
+ Query OK, 1 row affected (0.04 sec)
+ Rows matched: 1  Changed: 1  Warnings: 0
+
+ mysql> select * from Address_Book_Table;
+ +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
+ | FirstName | LastName | Address                 | City     | State       | Zip    | PhoneNumber | Email             |
+ +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
+ | Piyu      | Kolpuke  | 45A, XYZ Colony         | Pune     | Maha        | 879465 |    21379847 | piyu@gmail.com    |
+ | Aaroh     | Nelwad   | Amravati yashoda square | Amravati | Maharashtra |   7456 |     1258896 | aau@gmail.com     |
+ | Sonu      | Chame    | 45b, XYZ Colony         | goa      | yxt         |  74665 |     3774814 | sonu@gmail.com    |
+ | Pinkey    | Hade     | 49A, XY Colony          | Mumbai   | Maha        |  74855 |     751695  | pinkey@gmail.com    |
+ +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
+ 4 rows in set (0.18 sec)
