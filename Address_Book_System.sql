@@ -96,3 +96,14 @@ Records: 4  Duplicates: 0  Warnings: 0
  | Piyu      | Kolpuke  | 45A, XYZ Colony | Pune   | Maha  | 879465 |    21379847 | piyu@gmail.com  |
  +-----------+----------+-----------------+--------+-------+--------+-------------+-----------------+
  1 row in set (0.00 sec)
+
+
+
+ #UC7 - Ability to get the size of the address book by the city
+ mysql> SELECT COUNT(City) FROM Address_Book_Table;
+ +-------------+
+ | COUNT(City) |
+ +-------------+
+ |           3 |
+ +-------------+
+ 1 row in set (0.07 sec)
