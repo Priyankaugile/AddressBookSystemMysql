@@ -239,3 +239,33 @@ mysql> select * from Address_Book_Table;
 | Anuj     | Hade      | 49A, XY Colony          | Betul    | Maha        |  74855 |      751695 | anuj@gmail.com      |  5 | Family     | contact 5   |
 +-----------+----------+-------------------------+----------+-------------+--------+-------------+---------------------+----+------------+-------------+
 5 rows in set (0.00 sec)
+
+
+#UC12 - Draw the ER Diagram for Address Book Service DB
+
+mysql> CREATE TABLE People(
+    -> PersonId int primary key not null,
+    -> FirstName varchar(20) not null,
+    -> LastName varchar(20) not null,
+    -> PhoneNumber numeric(10),
+    -> Email VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (1.55 sec)
+
+mysql> CREATE TABLE Address(
+    -> PersonId int,
+    -> Person_Address varchar(50) not null,
+    -> City varchar(15) not null,
+    -> State varchar(20) not null,
+    -> Zip_Code numeric(6) not null,
+    -> FOREIGN KEY (PersonId) REFERENCES People(PersonId)
+    -> );
+Query OK, 0 rows affected (0.89 sec)
+
+mysql> CREATE TABLE AddressBook(
+    -> PersonId int,
+    -> AddressBookName varchar(20) not null,
+    -> AddressBookType varchar(20) not null,
+    -> FOREIGN KEY (PersonId) REFERENCES People(PersonId)
+    -> );
+Query OK, 0 rows affected (0.57 sec)
