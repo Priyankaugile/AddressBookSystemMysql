@@ -221,3 +221,21 @@ mysql> SELECT Type, COUNT(FirstName) FROM Address_Book_Table GROUP BY Type;
 | Profession |                1 |
 +------------+------------------+
 3 rows in set (0.08 sec)
+
+
+#UC11 - Ability to add person to both Friend and Family
+
+mysql> insert into Address_Book_Table (FirstName,LastName,Address,City,State,Zip,PhoneNumber,Email,Id,type,AddressBook) values("Anuj", "Hade", "49A, XY Colony", "Betul", "Maha", '74855', '751695', "anuj@gmail.com", '5', "Family", "contact5");
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from Address_Book_Table;
++-----------+----------+-------------------------+----------+-------------+--------+-------------+---------------------+----+------------+-------------+
+| FirstName | LastName | Address                 | City     | State       | Zip    | PhoneNumber | Email               | Id | Type       | AddressBook |
++-----------+----------+-------------------------+----------+-------------+--------+-------------+---------------------+----+------------+-------------+
+| Piyu     | Kolpuke   | 45A, XYZ Colony         | Pune     | Maha        | 879465 |    21379847 | piyu@gmail.com      |  1 | Family     | contact 1   |
+| Aaroh    | Nelwad    | Amravati yashoda square | Amravati | Maha        |   7456 |     1258896 | aaroh@gmail.com     |  2 | Family     | contact 2   |
+| Pinkey   | Hade      | 49A, XY Colony          | Mumbai   | Maha        |  74855 |      751695 | pinkey@gmail.com    |  3 | Friend     | contact 3   |
+| Vilas    | Naik      | Pachgaon                | Kolhapur | Maharashtra | 416500 |     9969999 | vikasnaik@gmail.com |  4 | Profession | contact 4   |
+| Anuj     | Hade      | 49A, XY Colony          | Betul    | Maha        |  74855 |      751695 | anuj@gmail.com      |  5 | Family     | contact 5   |
++-----------+----------+-------------------------+----------+-------------+--------+-------------+---------------------+----+------------+-------------+
+5 rows in set (0.00 sec)
