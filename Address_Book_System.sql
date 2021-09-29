@@ -100,6 +100,7 @@ Records: 4  Duplicates: 0  Warnings: 0
 
 
  #UC7 - Ability to get the size of the address book by the city
+
  mysql> SELECT COUNT(City) FROM Address_Book_Table;
  +-------------+
  | COUNT(City) |
@@ -107,3 +108,26 @@ Records: 4  Duplicates: 0  Warnings: 0
  |           3 |
  +-------------+
  1 row in set (0.07 sec)
+
+
+#UC8 - Ability to retrieve entries in alphabetical order by First Name
+
+ mysql> select * from Address_Book_Table;
+ +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
+ | FirstName | LastName | Address                 | City     | State       | Zip    | PhoneNumber | Email             |
+ +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
+ | Piyu      | Kolpuke  | 45A, XYZ Colony         | Pune     | Maha        | 879465 |    21379847 | piyu@gmail.com    |
+ | Aaroh     | Nelwad   | Amravati yashoda square | Amravati | Maha        |   7456 |     1258896 | aau@gmail.com     |
+ | Pinkey    | Hade     | 49A, XY Colony          | Mumbai   | Maha        |  74855 |     751695  | pinkey@gmail.com  |
+ +-----------+----------+-------------------------+----------+-------------+--------+-------------+-------------------+
+ 3 rows in set (0.00 sec)
+
+ mysql> select * from Address_Book_Table WHERE State = 'Maha' ORDER BY FirstName ASC;
+ +-----------+----------+-------------------------+----------+-------+--------+-------------+-------------------+
+ | FirstName | LastName | Address                 | City     | State | Zip    | PhoneNumber | Email             |
+ +-----------+----------+-------------------------+----------+-------+--------+-------------+-------------------+
+ | Aaroh     | Nelwad   | Amravati yashoda square | Amravati | Maha  |   7456 |  1258896    | aau@gmail.com     |
+ | Pinkey    | Hade     | 49A, XY Colony          | Mumbai   | Maha  |  74855 |     751695  | pinkey@gmail.com  |
+ | Rahul     | Ninawe   | 45A, XYZ Colony         | Nagpur   | Maha  | 879465 |    21379847 | rahul@gmail.com   |
+ +-----------+----------+-------------------------+----------+-------+--------+-------------+-------------------+
+ 3 rows in set (0.10 sec)
